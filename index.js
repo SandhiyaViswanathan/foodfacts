@@ -1,22 +1,22 @@
-var fs=require('fs');
-var ln = require('readline').createInterface({
+let fs=require('fs');
+let ln = require('readline').createInterface({
   input: fs.createReadStream('data/FoodFacts.csv')
 });
 
-var country = ['Netherlands', 'Canada', 'United Kingdom' , 'United States' , 'Australia' , 'France' , 'Germany' , 'Spain', 'South Africa'];
-var region=['northEurope','centralEurope','southEurope'];
-var northEurope = ['United Kingdom', 'Denmark', 'Sweden', 'Norway'];
-var centralEurope = ['France', 'Belgium', 'Germany', 'Switzerland', 'Netherlands'];
-var southEurope = ['Portugal', 'Greece', 'Italy', 'Spain', 'Croatia', 'Albania'];
-var data=[],final=[],final_c=[];
-var sugarindex=0,saltindex=0,countryindex=0,countryv = 0,sugar = 0,salt = 0,i=0;
-var carbohydrateindex=0,fatindex=0,proteinindex=0;
-var Carbohydrates = 0,fat = 0,protein=0,i=0;
-var Carbohydratesv = Array(3).fill(0);
-var fatv = Array(3).fill(0);
-var proteinv = Array(3).fill(0);
-var sugarv = Array(9).fill(0);
-var saltv = Array(9).fill(0);
+let country = ['Netherlands', 'Canada', 'United Kingdom' , 'United States' , 'Australia' , 'France' , 'Germany' , 'Spain', 'South Africa'];
+let region=['northEurope','centralEurope','southEurope'];
+let northEurope = ['United Kingdom', 'Denmark', 'Sweden', 'Norway'];
+let centralEurope = ['France', 'Belgium', 'Germany', 'Switzerland', 'Netherlands'];
+let southEurope = ['Portugal', 'Greece', 'Italy', 'Spain', 'Croatia', 'Albania'];
+let data=[],final=[],final_c=[];
+let sugarindex=0,saltindex=0,countryindex=0,countryv = 0,sugar = 0,salt = 0,i=0;
+let carbohydrateindex=0,fatindex=0,proteinindex=0;
+let Carbohydrates = 0,fat = 0,protein=0;
+let Carbohydratesv = Array(3).fill(0);
+let fatv = Array(3).fill(0);
+let proteinv = Array(3).fill(0);
+let sugarv = Array(9).fill(0);
+let saltv = Array(9).fill(0);
 
 ln.on('line', function (line) {
   data=line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
@@ -47,14 +47,14 @@ while(i<1)
    if(carbohydrate=="")carbohydrate=0;
    
 
-  var index=country.indexOf(countryv);
+  let index=country.indexOf(countryv);
      if(index!=-1)
       {
         sugarv[index]+=parseFloat(sugar);
         saltv[index]+=parseFloat(salt);
       }
 
-  var aa=northEurope.indexOf(countryv);
+  let aa=northEurope.indexOf(countryv);
  
      if(aa!=-1)
       {
@@ -63,7 +63,7 @@ while(i<1)
         fatv[0]+=parseFloat(fat);
       } 
 
-  var bb=centralEurope.indexOf(countryv);
+  let bb=centralEurope.indexOf(countryv);
        
       if(bb!=-1)
        {
@@ -72,7 +72,7 @@ while(i<1)
         fatv[1]+=parseFloat(fat);
         }
 
-  var cc=southEurope.indexOf(countryv);
+  let cc=southEurope.indexOf(countryv);
 
       if(cc!=-1)
         {
@@ -85,14 +85,14 @@ while(i<1)
 
 ln.on('close', function() {
   
-  for(var h1=0;h1<country.length;h1++) 
+  for(let h1=0;h1<country.length;h1++) 
   {
     final.push({Country:country[h1],
     Sugar:sugarv[h1],
     Salt:saltv[h1]
   });
   }
-  for(var h=0;h<region.length;h++) 
+  for(let h=0;h<region.length;h++) 
   {
     final_c.push({Region:region[h],
     
