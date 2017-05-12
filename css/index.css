@@ -11,12 +11,12 @@ a:hover
 	color: purple;
 
 }
-nav
-{
-	float:left;
-	max-width: 160px;
-	padding: 1em;
-}
+	/*nav
+	{
+		float:left;
+		max-width: 160px;
+		padding: 1em;
+	}*/
 nav ul
 {
 	list-style-type: none;

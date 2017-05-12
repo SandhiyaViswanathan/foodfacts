@@ -23,8 +23,8 @@ var	valueline2 = d3.svg.line()
 	.y(function(d) { return y(d.protein); });
 
 var	valueline3 = d3.svg.line()
-  .x(function(d) { return x(d.Region); })
-  .y(function(d) { return y(d.Carbohydrates); });
+    .x(function(d) { return x(d.Region); })
+    .y(function(d) { return y(d.Carbohydrates); });
 
 var	svg = d3.select("#outputjson")
 	.append("svg")
@@ -39,7 +39,7 @@ d3.json("../output/outputjson4.json", function(error, data) {
 		d.Region = d.Region;
 		d.fat = d.fat;
 		d.protein = d.protein;
-    d.Carbohydrates = d.Carbohydrates;
+        d.Carbohydrates = d.Carbohydrates;
 	});
 
 x.domain(data.map(function(d){
@@ -61,36 +61,36 @@ svg.append("path")
 		.attr("d", valueline2(data));
 
 svg.append("path")		
-    .attr("class", "line")
-    .style("stroke", "brown")   //counrty Vs carbohyderate
-    .attr("d", valueline3(data));
+        .attr("class", "line")
+        .style("stroke", "brown")   //counrty Vs carbohyderate
+        .attr("d", valueline3(data));
 
 
 svg.append("g")
-    .attr("class", "axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis)
-    .append("text")
-    .attr("transform", "translate(" + width + ",0)")
-    .attr("dy","1.3em")
-    .attr("dx","1.2em")
-    .style("font-size","17px")
-    .style("font-weight","bold")
-    .style("color","red")
-    .text("Regions");
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .append("text")
+        .attr("transform", "translate(" + width + ",0)")
+        .attr("dy","1.3em")
+        .attr("dx","1.2em")
+        .style("font-size","17px")
+        .style("font-weight","bold")
+        .style("color","red")
+        .text("Regions");
 
 	
 
 svg.append("g")
-    .attr("class", "axis")
-    .call(yAxis)
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("dy","1em")
-    .style("text-anchor", "end")
-    .style("font-size","16px")
-    .style("font-weight","bold")
-    .text("fat,protein,carbohydrates");
+        .attr("class", "axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("dy","1em")
+        .style("text-anchor", "end")
+        .style("font-size","16px")
+        .style("font-weight","bold")
+        .text("fat,protein,carbohydrates");
 
     
 

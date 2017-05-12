@@ -17,10 +17,10 @@
     .orient("left");
 
   var svg=d3.select("body").append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
   d3.json("../output/outputjson3.json",function(err,data){
 
@@ -70,34 +70,34 @@
           .attr("y",height)
           .transition().duration(3000)
           .delay(function(d,i) { return i*200;})
-        .attr("x", function (d) {
-            return horizontal(d.x);
+          .attr("x", function (d) {
+              return horizontal(d.x);
+            })
+            .attr("y", function (d) {
+                return vertical(d.y + d.y0);
+            })
+            .attr("height", function (d) {
+                return vertical(d.y0) - vertical(d.y + d.y0);
           })
-          .attr("y", function (d) {
-              return vertical(d.y + d.y0);
-          })
-          .attr("height", function (d) {
-              return vertical(d.y0) - vertical(d.y + d.y0);
-        })
-      .attr("width", horizontal.rangeBand());
+          .attr("width", horizontal.rangeBand());
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
       .append("text")
-       .attr("transform", "translate(" + width + ",0)")
-       .attr("dy","1.3em")
-       .attr("dx","1.2em")
-       .style("font-size","15px")
-       .style("font-weight","bold")
-       .style("color","red")
-       .text("Countries");
+      .attr("transform", "translate(" + width + ",0)")
+      .attr("dy","1.3em")
+      .attr("dx","1.2em")
+      .style("font-size","15px")
+      .style("font-weight","bold")
+      .style("color","red")
+      .text("Countries");
 
   svg.append("g")
-    .attr("class", "axis")
-    .call(yAxis)
-    .append("text")
+       .attr("class", "axis")
+       .call(yAxis)
+       .append("text")
        .attr("transform", "rotate(-90)")
        .attr("dy","1em")
        .style("text-anchor", "end")
@@ -121,11 +121,11 @@
            .style("fill", color);
 
      mar.append("text")
-         .attr("x", width - 24)
-         .attr("y", 9)
-         .attr("dy", ".35em")
-         .style("text-anchor", "end")
-         .style("fill","green")
-         .text(function(d,i) { return xData[i]; });
+           .attr("x", width - 24)
+           .attr("y", 9)
+           .attr("dy", ".35em")
+           .style("text-anchor", "end")
+           .style("fill","green")
+           .text(function(d,i) { return xData[i]; });
 
   });
